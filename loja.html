@@ -29,7 +29,10 @@
 
             <button class="navbar-toggler" type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#menu">
+                    data-bs-target="#menu"
+                    aria-controls="menu"
+                    aria-expanded="false"
+                    aria-label="Abrir menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -41,8 +44,11 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#categorias"
-                           role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="#categorias"
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
                             Categorias
                         </a>
 
@@ -50,6 +56,9 @@
                             <li><a class="dropdown-item" href="#categorias">Eletrônicos</a></li>
                             <li><a class="dropdown-item" href="#categorias">Moda</a></li>
                             <li><a class="dropdown-item" href="#categorias">Casa</a></li>
+                            <li><a class="dropdown-item" href="#categorias">Livros</a></li>
+                            <li><a class="dropdown-item" href="#categorias">Games</a></li>
+                            <li><a class="dropdown-item" href="#categorias">Beleza</a></li>
                         </ul>
                     </li>
 
@@ -58,8 +67,11 @@
                     </li>
                 </ul>
 
-                <form class="d-flex gap-2" role="search">
-                    <input class="form-control" type="search"
+                <form class="d-flex gap-2 my-2 my-lg-0" role="search"
+                      action="#produtos">
+                    <input class="form-control"
+                           type="search"
+                           name="busca"
                            placeholder="Buscar produtos..."
                            aria-label="Buscar produtos">
 
@@ -68,28 +80,30 @@
                     </button>
                 </form>
 
-                <a href="#produtos" class="btn btn-outline-primary ms-lg-3 mt-2 mt-lg-0">
-                    Carrinho <span class="badge text-bg-secondary">0</span>
+                <a href="#produtos"
+                   class="btn btn-outline-primary ms-lg-3 mt-2 mt-lg-0">
+                    Carrinho
+                    <span class="badge text-bg-secondary">0</span>
                 </a>
 
             </div>
         </div>
     </nav>
 
-  
     <!-- Carrossel principal -->
-    <section class="container my-4">
+    <section class="container my-4"
+             aria-label="Destaques da loja">
 
         <div id="carrosselPrincipal"
              class="carousel slide"
              data-bs-ride="carousel">
 
-            <!-- Indicadores dos slides -->
             <div class="carousel-indicators">
                 <button type="button"
                         data-bs-target="#carrosselPrincipal"
                         data-bs-slide-to="0"
                         class="active"
+                        aria-current="true"
                         aria-label="Slide 1"></button>
 
                 <button type="button"
@@ -103,7 +117,6 @@
                         aria-label="Slide 3"></button>
             </div>
 
-            <!-- Imagens -->
             <div class="carousel-inner rounded">
 
                 <div class="carousel-item active">
@@ -126,34 +139,326 @@
 
             </div>
 
-            <!-- Botão anterior -->
             <button class="carousel-control-prev"
                     type="button"
                     data-bs-target="#carrosselPrincipal"
                     data-bs-slide="prev">
-
                 <span class="carousel-control-prev-icon"
                       aria-hidden="true"></span>
-
                 <span class="visually-hidden">Anterior</span>
             </button>
 
-            <!-- Botão próximo -->
             <button class="carousel-control-next"
                     type="button"
                     data-bs-target="#carrosselPrincipal"
                     data-bs-slide="next">
-
                 <span class="carousel-control-next-icon"
                       aria-hidden="true"></span>
-
                 <span class="visually-hidden">Próximo</span>
             </button>
 
         </div>
     </section>
 
+    <!-- Categorias de produtos -->
+    <section id="categorias" class="container my-5">
 
+        <h2 class="text-center fw-bold mb-4">
+            Compre por categoria
+        </h2>
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+
+            <div class="col">
+                <a href="#produtos" class="text-decoration-none text-dark">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-1" aria-hidden="true">📱</div>
+                            <h3 class="fs-6 mt-2">Eletrônicos</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="#produtos" class="text-decoration-none text-dark">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-1" aria-hidden="true">👕</div>
+                            <h3 class="fs-6 mt-2">Moda</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="#produtos" class="text-decoration-none text-dark">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-1" aria-hidden="true">🏠</div>
+                            <h3 class="fs-6 mt-2">Casa</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="#produtos" class="text-decoration-none text-dark">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-1" aria-hidden="true">📚</div>
+                            <h3 class="fs-6 mt-2">Livros</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="#produtos" class="text-decoration-none text-dark">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-1" aria-hidden="true">🎮</div>
+                            <h3 class="fs-6 mt-2">Games</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col">
+                <a href="#produtos" class="text-decoration-none text-dark">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="fs-1" aria-hidden="true">💄</div>
+                            <h3 class="fs-6 mt-2">Beleza</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Produtos em destaque -->
+    <section id="produtos" class="container my-5">
+
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between align-items-md-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">Produtos em destaque</h2>
+                <p class="text-secondary mb-0">
+                    Confira algumas sugestões para você.
+                </p>
+            </div>
+
+            <span class="badge text-bg-danger mt-2 mt-md-0">
+                Ofertas especiais
+            </span>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+            <!-- Produto 1 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Fone+Bluetooth"
+                         class="card-img-top"
+                         alt="Imagem ilustrativa de fone Bluetooth">
+
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-success align-self-start mb-2">
+                            Mais vendido
+                        </span>
+                        <h3 class="h5 card-title">Fone Bluetooth</h3>
+                        <p class="card-text text-secondary">
+                            Som de qualidade para acompanhar sua rotina.
+                        </p>
+                        <p class="fw-bold fs-4 mt-auto">R$ 89,90</p>
+                        <a href="#contato" class="btn btn-primary w-100">
+                            Comprar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Relogio+Digital"
+                         class="card-img-top"
+                         alt="Imagem ilustrativa de relógio digital">
+
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-danger align-self-start mb-2">
+                            Oferta
+                        </span>
+                        <h3 class="h5 card-title">Relógio Digital</h3>
+                        <p class="card-text text-secondary">
+                            Praticidade para organizar o seu dia.
+                        </p>
+                        <p class="fw-bold fs-4 mt-auto">R$ 119,90</p>
+                        <a href="#contato" class="btn btn-primary w-100">
+                            Comprar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Mochila"
+                         class="card-img-top"
+                         alt="Imagem ilustrativa de mochila">
+
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-primary align-self-start mb-2">
+                            Novidade
+                        </span>
+                        <h3 class="h5 card-title">Mochila Casual</h3>
+                        <p class="card-text text-secondary">
+                            Uma opção versátil para estudos e passeios.
+                        </p>
+                        <p class="fw-bold fs-4 mt-auto">R$ 99,90</p>
+                        <a href="#contato" class="btn btn-primary w-100">
+                            Comprar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 4 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Garrafa+Termica"
+                         class="card-img-top"
+                         alt="Imagem ilustrativa de garrafa térmica">
+
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="h5 card-title">Garrafa Térmica</h3>
+                        <p class="card-text text-secondary">
+                            Ideal para levar sua bebida favorita.
+                        </p>
+                        <p class="fw-bold fs-4 mt-auto">R$ 59,90</p>
+                        <a href="#contato" class="btn btn-primary w-100">
+                            Comprar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 5 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Livro"
+                         class="card-img-top"
+                         alt="Imagem ilustrativa de livro">
+
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="h5 card-title">Livro de Tecnologia</h3>
+                        <p class="card-text text-secondary">
+                            Aprenda algo novo a cada página.
+                        </p>
+                        <p class="fw-bold fs-4 mt-auto">R$ 49,90</p>
+                        <a href="#contato" class="btn btn-primary w-100">
+                            Comprar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produto 6 -->
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Teclado"
+                         class="card-img-top"
+                         alt="Imagem ilustrativa de teclado">
+
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-warning align-self-start mb-2">
+                            Destaque
+                        </span>
+                        <h3 class="h5 card-title">Teclado</h3>
+                        <p class="card-text text-secondary">
+                            Uma opção prática para seu computador.
+                        </p>
+                        <p class="fw-bold fs-4 mt-auto">R$ 79,90</p>
+                        <a href="#contato" class="btn btn-primary w-100">
+                            Comprar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Faixa de benefícios -->
+    <section class="bg-white border-top border-bottom py-4 my-5">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+
+                <div class="col">
+                    <div class="fs-2" aria-hidden="true">🚚</div>
+                    <h2 class="h6 fw-bold">Entrega facilitada</h2>
+                    <p class="text-secondary mb-0">
+                        Consulte as condições de envio.
+                    </p>
+                </div>
+
+                <div class="col">
+                    <div class="fs-2" aria-hidden="true">🔒</div>
+                    <h2 class="h6 fw-bold">Compra segura</h2>
+                    <p class="text-secondary mb-0">
+                        Navegue com tranquilidade.
+                    </p>
+                </div>
+
+                <div class="col">
+                    <div class="fs-2" aria-hidden="true">💬</div>
+                    <h2 class="h6 fw-bold">Atendimento</h2>
+                    <p class="text-secondary mb-0">
+                        Estamos aqui para ajudar.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato" class="bg-dark text-white py-4">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6">
+                    <h2 class="h5 fw-bold">Vitrine Online</h2>
+                    <p class="text-white-50 mb-0">
+                        Uma vitrine de produtos para facilitar suas escolhas.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <h2 class="h5 fw-bold">Navegação</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="link-light">Início</a></li>
+                        <li><a href="#categorias" class="link-light">Categorias</a></li>
+                        <li><a href="#produtos" class="link-light">Produtos</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary">
+
+            <p class="text-center text-white-50 mb-0">
+                &copy; 2026 Vitrine Online. Página criada para fins educacionais.
+            </p>
+
+        </div>
+    </footer>
+
+    <!-- JavaScript do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
