@@ -4,462 +4,623 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Vitrine Online</title>
+    <title>Loja Online | Minha Loja</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body>
 
-    <!-- Faixa de aviso -->
+    <!-- Barra de aviso -->
     <div class="bg-dark text-white text-center py-2">
-        Frete grátis nas compras acima de R$ 199!
+        Frete grátis nas compras acima de R$ 199,00!
     </div>
 
-    <!-- Menu de navegação -->
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-        <div class="container">
-
-            <a class="navbar-brand fw-bold text-primary" href="#">
-                Vitrine Online
-            </a>
-
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu"
-                    aria-controls="menu"
-                    aria-expanded="false"
-                    aria-label="Abrir menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="menu">
-
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Início</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           href="#categorias"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Categorias
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#categorias">Eletrônicos</a></li>
-                            <li><a class="dropdown-item" href="#categorias">Moda</a></li>
-                            <li><a class="dropdown-item" href="#categorias">Casa</a></li>
-                            <li><a class="dropdown-item" href="#categorias">Livros</a></li>
-                            <li><a class="dropdown-item" href="#categorias">Games</a></li>
-                            <li><a class="dropdown-item" href="#categorias">Beleza</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#produtos">Ofertas</a>
-                    </li>
-                </ul>
-
-                <form class="d-flex gap-2 my-2 my-lg-0" role="search"
-                      action="#produtos">
-                    <input class="form-control"
-                           type="search"
-                           name="busca"
-                           placeholder="Buscar produtos..."
-                           aria-label="Buscar produtos">
-
-                    <button class="btn btn-primary" type="submit">
-                        Buscar
-                    </button>
-                </form>
-
-                <a href="#produtos"
-                   class="btn btn-outline-primary ms-lg-3 mt-2 mt-lg-0">
-                    Carrinho
-                    <span class="badge text-bg-secondary">0</span>
+    <!-- Cabeçalho e menu -->
+    <header class="bg-white border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary" href="#">
+                    Minha Loja
                 </a>
 
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuPrincipal"
+                        aria-controls="menuPrincipal"
+                        aria-expanded="false"
+                        aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#inicio">Início</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#categorias"
+                               role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Categorias
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#categorias">Eletrônicos</a></li>
+                                <li><a class="dropdown-item" href="#categorias">Moda</a></li>
+                                <li><a class="dropdown-item" href="#categorias">Casa</a></li>
+                                <li><a class="dropdown-item" href="#categorias">Acessórios</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#produtos">Produtos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                    </ul>
+
+                    <a class="btn btn-outline-primary" href="#produtos">
+                        Carrinho <span id="quantidadeCarrinho"
+                                       class="badge bg-primary">0</span>
+                    </a>
+                </div>
             </div>
+        </nav>
+
+        <!-- Busca: em uma linha própria no celular -->
+        <div class="container pb-3">
+            <form class="d-flex" role="search"
+                  onsubmit="event.preventDefault(); buscarProdutos();">
+                <input id="campoBusca" class="form-control me-2"
+                       type="search" placeholder="Buscar produtos..."
+                       aria-label="Buscar produtos">
+                <button class="btn btn-primary" type="submit">
+                    Buscar
+                </button>
+            </form>
         </div>
-    </nav>
+    </header>
 
-    <!-- Carrossel principal -->
-    <section class="container my-4"
-             aria-label="Destaques da loja">
+    <main id="inicio">
 
-        <div id="carrosselPrincipal"
-             class="carousel slide"
-             data-bs-ride="carousel">
+        <!-- Carrossel com três slides -->
+        <section class="container my-4" aria-label="Ofertas em destaque">
+            <div id="carrosselPrincipal" class="carousel slide"
+                 data-bs-ride="carousel">
 
-            <div class="carousel-indicators">
-                <button type="button"
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carrosselPrincipal"
+                            data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carrosselPrincipal"
+                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carrosselPrincipal"
+                            data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+
+                <div class="carousel-inner rounded">
+                    <div class="carousel-item active">
+                        <img src="https://placehold.co/1200x400/0d6efd/ffffff?text=Ofertas+Especiais"
+                             class="d-block w-100"
+                             alt="Ofertas especiais da loja">
+                        <div class="carousel-caption">
+                            <h2>Ofertas especiais</h2>
+                            <p>Encontre seus produtos favoritos!</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/1200x400/198754/ffffff?text=Novidades"
+                             class="d-block w-100"
+                             alt="Novidades disponíveis na loja">
+                        <div class="carousel-caption">
+                            <h2>Novidades para você</h2>
+                            <p>Confira os lançamentos.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/1200x400/6f42c1/ffffff?text=Frete+Gratis"
+                             class="d-block w-100"
+                             alt="Promoção de frete grátis">
+                        <div class="carousel-caption">
+                            <h2>Frete grátis</h2>
+                            <p>Aproveite nossas condições especiais.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button"
                         data-bs-target="#carrosselPrincipal"
-                        data-bs-slide-to="0"
-                        class="active"
-                        aria-current="true"
-                        aria-label="Slide 1"></button>
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"
+                          aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
 
-                <button type="button"
+                <button class="carousel-control-next" type="button"
                         data-bs-target="#carrosselPrincipal"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-
-                <button type="button"
-                        data-bs-target="#carrosselPrincipal"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"
+                          aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
             </div>
+        </section>
 
-            <div class="carousel-inner rounded">
+        <!-- Categorias: 3 por linha no celular e 6 no computador -->
+        <section id="categorias" class="container my-5">
+            <h2 class="text-center mb-4">Nossas categorias</h2>
 
-                <div class="carousel-item active">
-                    <img src="https://placehold.co/1200x400/0d6efd/ffffff?text=Grandes+Ofertas"
-                         class="d-block w-100"
-                         alt="Grandes ofertas da loja">
-                </div>
-
-                <div class="carousel-item">
-                    <img src="https://placehold.co/1200x400/198754/ffffff?text=Novidades"
-                         class="d-block w-100"
-                         alt="Novidades da loja">
-                </div>
-
-                <div class="carousel-item">
-                    <img src="https://placehold.co/1200x400/6f42c1/ffffff?text=Descontos+Especiais"
-                         class="d-block w-100"
-                         alt="Descontos especiais">
-                </div>
-
-            </div>
-
-            <button class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carrosselPrincipal"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"
-                      aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
-
-            <button class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carrosselPrincipal"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon"
-                      aria-hidden="true"></span>
-                <span class="visually-hidden">Próximo</span>
-            </button>
-
-        </div>
-    </section>
-
-    <!-- Categorias de produtos -->
-    <section id="categorias" class="container my-5">
-
-        <h2 class="text-center fw-bold mb-4">
-            Compre por categoria
-        </h2>
-
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
-
-            <div class="col">
-                <a href="#produtos" class="text-decoration-none text-dark">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <div class="fs-1" aria-hidden="true">📱</div>
-                            <h3 class="fs-6 mt-2">Eletrônicos</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="#produtos" class="text-decoration-none text-dark">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <div class="fs-1" aria-hidden="true">👕</div>
-                            <h3 class="fs-6 mt-2">Moda</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="#produtos" class="text-decoration-none text-dark">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <div class="fs-1" aria-hidden="true">🏠</div>
-                            <h3 class="fs-6 mt-2">Casa</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="#produtos" class="text-decoration-none text-dark">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <div class="fs-1" aria-hidden="true">📚</div>
-                            <h3 class="fs-6 mt-2">Livros</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="#produtos" class="text-decoration-none text-dark">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <div class="fs-1" aria-hidden="true">🎮</div>
-                            <h3 class="fs-6 mt-2">Games</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col">
-                <a href="#produtos" class="text-decoration-none text-dark">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <div class="fs-1" aria-hidden="true">💄</div>
-                            <h3 class="fs-6 mt-2">Beleza</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Produtos em destaque -->
-    <section id="produtos" class="container my-5">
-
-        <div class="d-flex flex-column flex-md-row
-                    justify-content-between align-items-md-center mb-4">
-            <div>
-                <h2 class="fw-bold mb-1">Produtos em destaque</h2>
-                <p class="text-secondary mb-0">
-                    Confira algumas sugestões para você.
-                </p>
-            </div>
-
-            <span class="badge text-bg-danger mt-2 mt-md-0">
-                Ofertas especiais
-            </span>
-        </div>
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-
-            <!-- Produto 1 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Fone+Bluetooth"
-                         class="card-img-top"
-                         alt="Imagem ilustrativa de fone Bluetooth">
-
-                    <div class="card-body d-flex flex-column">
-                        <span class="badge text-bg-success align-self-start mb-2">
-                            Mais vendido
-                        </span>
-                        <h3 class="h5 card-title">Fone Bluetooth</h3>
-                        <p class="card-text text-secondary">
-                            Som de qualidade para acompanhar sua rotina.
-                        </p>
-                        <p class="fw-bold fs-4 mt-auto">R$ 89,90</p>
-                        <a href="#contato" class="btn btn-primary w-100">
-                            Comprar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 2 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Relogio+Digital"
-                         class="card-img-top"
-                         alt="Imagem ilustrativa de relógio digital">
-
-                    <div class="card-body d-flex flex-column">
-                        <span class="badge text-bg-danger align-self-start mb-2">
-                            Oferta
-                        </span>
-                        <h3 class="h5 card-title">Relógio Digital</h3>
-                        <p class="card-text text-secondary">
-                            Praticidade para organizar o seu dia.
-                        </p>
-                        <p class="fw-bold fs-4 mt-auto">R$ 119,90</p>
-                        <a href="#contato" class="btn btn-primary w-100">
-                            Comprar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 3 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Mochila"
-                         class="card-img-top"
-                         alt="Imagem ilustrativa de mochila">
-
-                    <div class="card-body d-flex flex-column">
-                        <span class="badge text-bg-primary align-self-start mb-2">
-                            Novidade
-                        </span>
-                        <h3 class="h5 card-title">Mochila Casual</h3>
-                        <p class="card-text text-secondary">
-                            Uma opção versátil para estudos e passeios.
-                        </p>
-                        <p class="fw-bold fs-4 mt-auto">R$ 99,90</p>
-                        <a href="#contato" class="btn btn-primary w-100">
-                            Comprar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 4 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Garrafa+Termica"
-                         class="card-img-top"
-                         alt="Imagem ilustrativa de garrafa térmica">
-
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">Garrafa Térmica</h3>
-                        <p class="card-text text-secondary">
-                            Ideal para levar sua bebida favorita.
-                        </p>
-                        <p class="fw-bold fs-4 mt-auto">R$ 59,90</p>
-                        <a href="#contato" class="btn btn-primary w-100">
-                            Comprar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 5 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Livro"
-                         class="card-img-top"
-                         alt="Imagem ilustrativa de livro">
-
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">Livro de Tecnologia</h3>
-                        <p class="card-text text-secondary">
-                            Aprenda algo novo a cada página.
-                        </p>
-                        <p class="fw-bold fs-4 mt-auto">R$ 49,90</p>
-                        <a href="#contato" class="btn btn-primary w-100">
-                            Comprar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Produto 6 -->
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <img src="https://placehold.co/600x400/e9ecef/212529?text=Teclado"
-                         class="card-img-top"
-                         alt="Imagem ilustrativa de teclado">
-
-                    <div class="card-body d-flex flex-column">
-                        <span class="badge text-bg-warning align-self-start mb-2">
-                            Destaque
-                        </span>
-                        <h3 class="h5 card-title">Teclado</h3>
-                        <p class="card-text text-secondary">
-                            Uma opção prática para seu computador.
-                        </p>
-                        <p class="fw-bold fs-4 mt-auto">R$ 79,90</p>
-                        <a href="#contato" class="btn btn-primary w-100">
-                            Comprar
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Faixa de benefícios -->
-    <section class="bg-white border-top border-bottom py-4 my-5">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
-
+            <div class="row row-cols-3 row-cols-lg-6 g-3">
                 <div class="col">
-                    <div class="fs-2" aria-hidden="true">🚚</div>
-                    <h2 class="h6 fw-bold">Entrega facilitada</h2>
-                    <p class="text-secondary mb-0">
-                        Consulte as condições de envio.
-                    </p>
+                    <a href="#produtos" class="text-decoration-none text-dark">
+                        <div class="card h-100 text-center p-2">
+                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Eletronicos"
+                                 class="card-img-top" alt="Eletrônicos">
+                            <div class="card-body p-2">
+                                <h3 class="h6">Eletrônicos</h3>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="col">
-                    <div class="fs-2" aria-hidden="true">🔒</div>
-                    <h2 class="h6 fw-bold">Compra segura</h2>
-                    <p class="text-secondary mb-0">
-                        Navegue com tranquilidade.
-                    </p>
+                    <a href="#produtos" class="text-decoration-none text-dark">
+                        <div class="card h-100 text-center p-2">
+                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Moda"
+                                 class="card-img-top" alt="Moda">
+                            <div class="card-body p-2">
+                                <h3 class="h6">Moda</h3>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="col">
-                    <div class="fs-2" aria-hidden="true">💬</div>
-                    <h2 class="h6 fw-bold">Atendimento</h2>
-                    <p class="text-secondary mb-0">
-                        Estamos aqui para ajudar.
-                    </p>
+                    <a href="#produtos" class="text-decoration-none text-dark">
+                        <div class="card h-100 text-center p-2">
+                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Casa"
+                                 class="card-img-top" alt="Casa">
+                            <div class="card-body p-2">
+                                <h3 class="h6">Casa</h3>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
+                <div class="col">
+                    <a href="#produtos" class="text-decoration-none text-dark">
+                        <div class="card h-100 text-center p-2">
+                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Livros"
+                                 class="card-img-top" alt="Livros">
+                            <div class="card-body p-2">
+                                <h3 class="h6">Livros</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="#produtos" class="text-decoration-none text-dark">
+                        <div class="card h-100 text-center p-2">
+                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Beleza"
+                                 class="card-img-top" alt="Beleza">
+                            <div class="card-body p-2">
+                                <h3 class="h6">Beleza</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="#produtos" class="text-decoration-none text-dark">
+                        <div class="card h-100 text-center p-2">
+                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Acessorios"
+                                 class="card-img-top" alt="Acessórios">
+                            <div class="card-body p-2">
+                                <h3 class="h6">Acessórios</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Rodapé -->
-    <footer id="contato" class="bg-dark text-white py-4">
-        <div class="container">
+        <!-- Produtos: 1 por linha no celular, 2 no tablet e 4 no computador -->
+        <section id="produtos" class="container my-5">
+            <h2 class="text-center mb-2">Produtos em destaque</h2>
+            <p class="text-center text-secondary mb-4">
+                Confira nossas ofertas especiais.
+            </p>
 
+            <div id="listaProdutos"
+                 class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <div class="col produto" data-nome="Fone Bluetooth">
+                    <div class="card h-100" role="button" tabindex="0"
+                         data-produto="Fone Bluetooth"
+                         data-descricao="Fone sem fio para ouvir suas músicas e aproveitar o dia."
+                         data-preco="79,90"
+                         onclick="abrirProduto(this)"
+                         onkeydown="abrirProdutoTeclado(event, this)">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Fone+Bluetooth"
+                                 class="card-img-top"
+                                 alt="Fone Bluetooth">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                Promoção
+                            </span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title">Fone Bluetooth</h3>
+                            <p class="text-secondary small">Som sem fios para o dia a dia.</p>
+                            <p class="mb-1">
+                                <del class="text-secondary">R$ 119,90</del>
+                            </p>
+                            <p class="fs-5 fw-bold text-primary">R$ 79,90</p>
+                            <button type="button" class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho(event, this)">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col produto" data-nome="Relógio Digital">
+                    <div class="card h-100" role="button" tabindex="0"
+                         data-produto="Relógio Digital"
+                         data-descricao="Relógio moderno para acompanhar sua rotina."
+                         data-preco="99,90"
+                         onclick="abrirProduto(this)"
+                         onkeydown="abrirProdutoTeclado(event, this)">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Relogio+Digital"
+                                 class="card-img-top"
+                                 alt="Relógio Digital">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                Promoção
+                            </span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title">Relógio Digital</h3>
+                            <p class="text-secondary small">Praticidade e estilo.</p>
+                            <p class="mb-1">
+                                <del class="text-secondary">R$ 149,90</del>
+                            </p>
+                            <p class="fs-5 fw-bold text-primary">R$ 99,90</p>
+                            <button type="button" class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho(event, this)">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col produto" data-nome="Mochila Casual">
+                    <div class="card h-100" role="button" tabindex="0"
+                         data-produto="Mochila Casual"
+                         data-descricao="Mochila versátil para estudar, trabalhar ou passear."
+                         data-preco="89,90"
+                         onclick="abrirProduto(this)"
+                         onkeydown="abrirProdutoTeclado(event, this)">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Mochila+Casual"
+                                 class="card-img-top"
+                                 alt="Mochila Casual">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                Promoção
+                            </span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title">Mochila Casual</h3>
+                            <p class="text-secondary small">Espaço para seus itens essenciais.</p>
+                            <p class="mb-1">
+                                <del class="text-secondary">R$ 129,90</del>
+                            </p>
+                            <p class="fs-5 fw-bold text-primary">R$ 89,90</p>
+                            <button type="button" class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho(event, this)">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col produto" data-nome="Garrafa Térmica">
+                    <div class="card h-100" role="button" tabindex="0"
+                         data-produto="Garrafa Térmica"
+                         data-descricao="Garrafa para ajudar a manter sua bebida na temperatura desejada."
+                         data-preco="49,90"
+                         onclick="abrirProduto(this)"
+                         onkeydown="abrirProdutoTeclado(event, this)">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Garrafa+Termica"
+                                 class="card-img-top"
+                                 alt="Garrafa Térmica">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                Promoção
+                            </span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title">Garrafa Térmica</h3>
+                            <p class="text-secondary small">Ideal para acompanhar você.</p>
+                            <p class="mb-1">
+                                <del class="text-secondary">R$ 69,90</del>
+                            </p>
+                            <p class="fs-5 fw-bold text-primary">R$ 49,90</p>
+                            <button type="button" class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho(event, this)">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p id="mensagemBusca" class="text-center mt-3"
+               aria-live="polite"></p>
+        </section>
+
+        <!-- Dois banners lado a lado -->
+        <section class="container my-5" aria-label="Campanhas da loja">
             <div class="row g-4">
-
                 <div class="col-12 col-md-6">
-                    <h2 class="h5 fw-bold">Vitrine Online</h2>
-                    <p class="text-white-50 mb-0">
-                        Uma vitrine de produtos para facilitar suas escolhas.
-                    </p>
+                    <div class="bg-primary text-white rounded p-4 h-100">
+                        <h2 class="h4">Novidades para você</h2>
+                        <p>Descubra produtos que combinam com seu estilo.</p>
+                        <a href="#produtos" class="btn btn-light">
+                            Ver produtos
+                        </a>
+                    </div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <h2 class="h5 fw-bold">Navegação</h2>
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#" class="link-light">Início</a></li>
+                    <div class="bg-success text-white rounded p-4 h-100">
+                        <h2 class="h4">Ofertas especiais</h2>
+                        <p>Aproveite preços promocionais por tempo limitado.</p>
+                        <a href="#produtos" class="btn btn-light">
+                            Aproveitar ofertas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefícios em três colunas -->
+        <section class="bg-light py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Por que comprar conosco?</h2>
+
+                <div class="row g-4 text-center">
+                    <div class="col-12 col-md-4">
+                        <div class="p-3 h-100">
+                            <h3 class="h5">Entrega para você</h3>
+                            <p class="mb-0">Receba seus pedidos com comodidade.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="p-3 h-100">
+                            <h3 class="h5">Pagamento seguro</h3>
+                            <p class="mb-0">Uma experiência de compra simples.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="p-3 h-100">
+                            <h3 class="h5">Atendimento</h3>
+                            <p class="mb-0">Estamos aqui para ajudar você.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section id="contato" class="container my-5">
+            <div class="bg-primary text-white rounded p-4 p-md-5">
+                <h2 class="h3 text-center">Receba nossas novidades</h2>
+                <p class="text-center">
+                    Cadastre seu e-mail para ficar por dentro das ofertas.
+                </p>
+
+                <form class="row justify-content-center"
+                      onsubmit="assinarNewsletter(event)">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <label for="emailNewsletter" class="form-label">
+                            Seu e-mail
+                        </label>
+
+                        <div class="input-group">
+                            <input type="email" id="emailNewsletter"
+                                   class="form-control"
+                                   placeholder="seuemail@exemplo.com"
+                                   required>
+                            <button class="btn btn-dark" type="submit">
+                                Assinar
+                            </button>
+                        </div>
+                        <p id="mensagemNewsletter" class="mt-2 mb-0"
+                           aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé com quatro colunas -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-3">
+                    <h2 class="h5">Minha Loja</h2>
+                    <p class="text-light">
+                        Produtos selecionados para facilitar seu dia a dia.
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <h2 class="h5">Institucional</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="link-light">Início</a></li>
                         <li><a href="#categorias" class="link-light">Categorias</a></li>
                         <li><a href="#produtos" class="link-light">Produtos</a></li>
                     </ul>
                 </div>
 
+                <div class="col-12 col-md-3">
+                    <h2 class="h5">Atendimento</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#contato" class="link-light">Fale conosco</a></li>
+                        <li><a href="#contato" class="link-light">Dúvidas</a></li>
+                        <li><a href="#contato" class="link-light">Newsletter</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <h2 class="h5">Redes sociais</h2>
+                    <p class="mb-1">Acompanhe nossas novidades.</p>
+                    <a href="https://www.instagram.com/"
+                       class="link-light" target="_blank"
+                       rel="noopener noreferrer">Instagram</a>
+                </div>
             </div>
 
             <hr class="border-secondary">
 
-            <p class="text-center text-white-50 mb-0">
-                &copy; 2026 Vitrine Online. Página criada para fins educacionais.
+            <p class="text-center mb-0">
+                &copy; 2026 Minha Loja. Todos os direitos reservados.
             </p>
-
         </div>
     </footer>
+
+    <!-- Modal de detalhes do produto -->
+    <div class="modal fade" id="produtoModal" tabindex="-1"
+         aria-labelledby="tituloModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="tituloModal">
+                        Detalhes do produto
+                    </h2>
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Fechar"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="descricaoModal"></p>
+                    <p class="fs-5 fw-bold text-primary" id="precoModal"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Funções da página -->
+    <script>
+        let quantidadeCarrinho = 0;
+
+        function abrirProduto(cartao) {
+            document.getElementById("tituloModal").textContent =
+                cartao.dataset.produto;
+
+            document.getElementById("descricaoModal").textContent =
+                cartao.dataset.descricao;
+
+            document.getElementById("precoModal").textContent =
+                "Preço: R$ " + cartao.dataset.preco;
+
+            const modal = bootstrap.Modal.getOrCreateInstance(
+                document.getElementById("produtoModal")
+            );
+
+            modal.show();
+        }
+
+        function abrirProdutoTeclado(evento, cartao) {
+            if (evento.target.closest("button")) {
+                return;
+            }
+
+            if (evento.key === "Enter" || evento.key === " ") {
+                evento.preventDefault();
+                abrirProduto(cartao);
+            }
+        }
+
+        function adicionarCarrinho(evento, botao) {
+            evento.stopPropagation();
+
+            quantidadeCarrinho++;
+
+            document.getElementById("quantidadeCarrinho").textContent =
+                quantidadeCarrinho;
+
+            const textoOriginal = botao.textContent;
+            botao.textContent = "Adicionado!";
+
+            setTimeout(function () {
+                botao.textContent = textoOriginal;
+            }, 1200);
+        }
+
+        function buscarProdutos() {
+            const busca = document.getElementById("campoBusca")
+                .value.trim().toLowerCase();
+
+            const produtos = document.querySelectorAll(".produto");
+            let encontrados = 0;
+
+            produtos.forEach(function (produto) {
+                const nome = produto.dataset.nome.toLowerCase();
+                const corresponde = nome.includes(busca);
+
+                produto.classList.toggle("d-none", !corresponde);
+
+                if (corresponde) {
+                    encontrados++;
+                }
+            });
+
+            const mensagem = document.getElementById("mensagemBusca");
+
+            if (busca === "") {
+                mensagem.textContent = "Mostrando todos os produtos.";
+            } else if (encontrados === 0) {
+                mensagem.textContent = "Nenhum produto encontrado.";
+            } else {
+                mensagem.textContent =
+                    encontrados + " produto(s) encontrado(s).";
+            }
+        }
+
+        function assinarNewsletter(evento) {
+            evento.preventDefault();
+
+            document.getElementById("mensagemNewsletter").textContent =
+                "Obrigado! Seu e-mail foi validado nesta demonstração.";
+
+            evento.target.reset();
+        }
+    </script>
+
 </body>
 </html>
+
