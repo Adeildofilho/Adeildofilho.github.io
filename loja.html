@@ -76,7 +76,83 @@
         </div>
     </nav>
 
-    <!-- As outras seções serão adicionadas aqui -->
+  
+    <!-- Carrossel principal -->
+    <section class="container my-4">
+
+        <div id="carrosselPrincipal"
+             class="carousel slide"
+             data-bs-ride="carousel">
+
+            <!-- Indicadores dos slides -->
+            <div class="carousel-indicators">
+                <button type="button"
+                        data-bs-target="#carrosselPrincipal"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-label="Slide 1"></button>
+
+                <button type="button"
+                        data-bs-target="#carrosselPrincipal"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+
+                <button type="button"
+                        data-bs-target="#carrosselPrincipal"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+
+            <!-- Imagens -->
+            <div class="carousel-inner rounded">
+
+                <div class="carousel-item active">
+                    <img src="https://placehold.co/1200x400/0d6efd/ffffff?text=Grandes+Ofertas"
+                         class="d-block w-100"
+                         alt="Grandes ofertas da loja">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://placehold.co/1200x400/198754/ffffff?text=Novidades"
+                         class="d-block w-100"
+                         alt="Novidades da loja">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://placehold.co/1200x400/6f42c1/ffffff?text=Descontos+Especiais"
+                         class="d-block w-100"
+                         alt="Descontos especiais">
+                </div>
+
+            </div>
+
+            <!-- Botão anterior -->
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carrosselPrincipal"
+                    data-bs-slide="prev">
+
+                <span class="carousel-control-prev-icon"
+                      aria-hidden="true"></span>
+
+                <span class="visually-hidden">Anterior</span>
+            </button>
+
+            <!-- Botão próximo -->
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carrosselPrincipal"
+                    data-bs-slide="next">
+
+                <span class="carousel-control-next-icon"
+                      aria-hidden="true"></span>
+
+                <span class="visually-hidden">Próximo</span>
+            </button>
+
+        </div>
+    </section>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
