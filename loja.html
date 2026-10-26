@@ -3,8 +3,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Online | Minha Loja</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minha Loja Online</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -14,15 +14,15 @@
 <body>
 
     <!-- Barra de aviso -->
-    <div class="bg-dark text-white text-center py-2">
+    <div class="bg-dark text-white text-center p-2">
         Frete grátis nas compras acima de R$ 199,00!
     </div>
 
-    <!-- Cabeçalho e menu -->
-    <header class="bg-white border-bottom">
-        <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- Menu principal -->
+    <header class="border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container">
-                <a class="navbar-brand fw-bold text-primary" href="#">
+                <a class="navbar-brand fw-bold text-primary" href="#inicio">
                     Minha Loja
                 </a>
 
@@ -36,18 +36,15 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="menuPrincipal">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#inicio">Início</a>
+                            <a class="nav-link" href="#inicio">Início</a>
                         </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#categorias"
-                               role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
+                               data-bs-toggle="dropdown">
                                 Categorias
                             </a>
-
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#categorias">Eletrônicos</a></li>
                                 <li><a class="dropdown-item" href="#categorias">Moda</a></li>
@@ -55,34 +52,28 @@
                                 <li><a class="dropdown-item" href="#categorias">Acessórios</a></li>
                             </ul>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#produtos">Produtos</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#contato">Contato</a>
                         </li>
                     </ul>
 
                     <a class="btn btn-outline-primary" href="#produtos">
-                        Carrinho <span id="quantidadeCarrinho"
-                                       class="badge bg-primary">0</span>
+                        Carrinho (<span id="quantidadeCarrinho">0</span>)
                     </a>
                 </div>
             </div>
         </nav>
 
-        <!-- Busca: em uma linha própria no celular -->
+        <!-- Busca em linha própria -->
         <div class="container pb-3">
-            <form class="d-flex" role="search"
-                  onsubmit="event.preventDefault(); buscarProdutos();">
-                <input id="campoBusca" class="form-control me-2"
+            <form class="d-flex" id="formBusca" role="search">
+                <input class="form-control me-2" id="campoBusca"
                        type="search" placeholder="Buscar produtos..."
                        aria-label="Buscar produtos">
-                <button class="btn btn-primary" type="submit">
-                    Buscar
-                </button>
+                <button class="btn btn-primary" type="submit">Buscar</button>
             </form>
         </div>
     </header>
@@ -90,14 +81,14 @@
     <main id="inicio">
 
         <!-- Carrossel com três slides -->
-        <section class="container my-4" aria-label="Ofertas em destaque">
+        <section class="container my-4">
             <div id="carrosselPrincipal" class="carousel slide"
                  data-bs-ride="carousel">
 
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carrosselPrincipal"
                             data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
+                            aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carrosselPrincipal"
                             data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carrosselPrincipal"
@@ -107,18 +98,16 @@
                 <div class="carousel-inner rounded">
                     <div class="carousel-item active">
                         <img src="https://placehold.co/1200x400/0d6efd/ffffff?text=Ofertas+Especiais"
-                             class="d-block w-100"
-                             alt="Ofertas especiais da loja">
+                             class="d-block w-100" alt="Ofertas especiais">
                         <div class="carousel-caption">
                             <h2>Ofertas especiais</h2>
-                            <p>Encontre seus produtos favoritos!</p>
+                            <p>Encontre seus produtos favoritos.</p>
                         </div>
                     </div>
 
                     <div class="carousel-item">
                         <img src="https://placehold.co/1200x400/198754/ffffff?text=Novidades"
-                             class="d-block w-100"
-                             alt="Novidades disponíveis na loja">
+                             class="d-block w-100" alt="Novidades da loja">
                         <div class="carousel-caption">
                             <h2>Novidades para você</h2>
                             <p>Confira os lançamentos.</p>
@@ -127,296 +116,259 @@
 
                     <div class="carousel-item">
                         <img src="https://placehold.co/1200x400/6f42c1/ffffff?text=Frete+Gratis"
-                             class="d-block w-100"
-                             alt="Promoção de frete grátis">
+                             class="d-block w-100" alt="Frete grátis">
                         <div class="carousel-caption">
                             <h2>Frete grátis</h2>
-                            <p>Aproveite nossas condições especiais.</p>
+                            <p>Aproveite nossas ofertas.</p>
                         </div>
                     </div>
                 </div>
 
                 <button class="carousel-control-prev" type="button"
                         data-bs-target="#carrosselPrincipal"
-                        data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"
-                          aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
+                        data-bs-slide="prev" aria-label="Slide anterior">
+                    <span class="carousel-control-prev-icon"></span>
                 </button>
 
                 <button class="carousel-control-next" type="button"
                         data-bs-target="#carrosselPrincipal"
-                        data-bs-slide="next">
-                    <span class="carousel-control-next-icon"
-                          aria-hidden="true"></span>
-                    <span class="visually-hidden">Próximo</span>
+                        data-bs-slide="next" aria-label="Próximo slide">
+                    <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
         </section>
 
-        <!-- Categorias: 3 por linha no celular e 6 no computador -->
+        <!-- Categorias: três no celular e seis no computador -->
         <section id="categorias" class="container my-5">
             <h2 class="text-center mb-4">Nossas categorias</h2>
 
             <div class="row row-cols-3 row-cols-lg-6 g-3">
                 <div class="col">
                     <a href="#produtos" class="text-decoration-none text-dark">
-                        <div class="card h-100 text-center p-2">
-                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Eletronicos"
+                        <div class="card h-100 text-center">
+                            <img src="https://placehold.co/200x140?text=Eletronicos"
                                  class="card-img-top" alt="Eletrônicos">
-                            <div class="card-body p-2">
-                                <h3 class="h6">Eletrônicos</h3>
-                            </div>
+                            <div class="card-body p-2"><h3 class="h6">Eletrônicos</h3></div>
                         </div>
                     </a>
                 </div>
-
                 <div class="col">
                     <a href="#produtos" class="text-decoration-none text-dark">
-                        <div class="card h-100 text-center p-2">
-                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Moda"
+                        <div class="card h-100 text-center">
+                            <img src="https://placehold.co/200x140?text=Moda"
                                  class="card-img-top" alt="Moda">
-                            <div class="card-body p-2">
-                                <h3 class="h6">Moda</h3>
-                            </div>
+                            <div class="card-body p-2"><h3 class="h6">Moda</h3></div>
                         </div>
                     </a>
                 </div>
-
                 <div class="col">
                     <a href="#produtos" class="text-decoration-none text-dark">
-                        <div class="card h-100 text-center p-2">
-                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Casa"
+                        <div class="card h-100 text-center">
+                            <img src="https://placehold.co/200x140?text=Casa"
                                  class="card-img-top" alt="Casa">
-                            <div class="card-body p-2">
-                                <h3 class="h6">Casa</h3>
-                            </div>
+                            <div class="card-body p-2"><h3 class="h6">Casa</h3></div>
                         </div>
                     </a>
                 </div>
-
                 <div class="col">
                     <a href="#produtos" class="text-decoration-none text-dark">
-                        <div class="card h-100 text-center p-2">
-                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Livros"
+                        <div class="card h-100 text-center">
+                            <img src="https://placehold.co/200x140?text=Livros"
                                  class="card-img-top" alt="Livros">
-                            <div class="card-body p-2">
-                                <h3 class="h6">Livros</h3>
-                            </div>
+                            <div class="card-body p-2"><h3 class="h6">Livros</h3></div>
                         </div>
                     </a>
                 </div>
-
                 <div class="col">
                     <a href="#produtos" class="text-decoration-none text-dark">
-                        <div class="card h-100 text-center p-2">
-                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Beleza"
+                        <div class="card h-100 text-center">
+                            <img src="https://placehold.co/200x140?text=Beleza"
                                  class="card-img-top" alt="Beleza">
-                            <div class="card-body p-2">
-                                <h3 class="h6">Beleza</h3>
-                            </div>
+                            <div class="card-body p-2"><h3 class="h6">Beleza</h3></div>
                         </div>
                     </a>
                 </div>
-
                 <div class="col">
                     <a href="#produtos" class="text-decoration-none text-dark">
-                        <div class="card h-100 text-center p-2">
-                            <img src="https://placehold.co/150x120/e9ecef/212529?text=Acessorios"
+                        <div class="card h-100 text-center">
+                            <img src="https://placehold.co/200x140?text=Acessorios"
                                  class="card-img-top" alt="Acessórios">
-                            <div class="card-body p-2">
-                                <h3 class="h6">Acessórios</h3>
-                            </div>
+                            <div class="card-body p-2"><h3 class="h6">Acessórios</h3></div>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Produtos: 1 por linha no celular, 2 no tablet e 4 no computador -->
+        <!-- Produtos: uma coluna no celular, duas no tablet e quatro no computador -->
         <section id="produtos" class="container my-5">
             <h2 class="text-center mb-2">Produtos em destaque</h2>
             <p class="text-center text-secondary mb-4">
-                Confira nossas ofertas especiais.
+                Confira nossas ofertas.
             </p>
 
             <div id="listaProdutos"
                  class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
+                <!-- Produto 1 -->
                 <div class="col produto" data-nome="Fone Bluetooth">
-                    <div class="card h-100" role="button" tabindex="0"
-                         data-produto="Fone Bluetooth"
-                         data-descricao="Fone sem fio para ouvir suas músicas e aproveitar o dia."
-                         data-preco="79,90"
-                         onclick="abrirProduto(this)"
-                         onkeydown="abrirProdutoTeclado(event, this)">
+                    <div class="card h-100">
                         <div class="position-relative">
-                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Fone+Bluetooth"
-                                 class="card-img-top"
-                                 alt="Fone Bluetooth">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                                 class="card-img-top" alt="Fone de ouvido"
+                                 loading="lazy">
                             <span class="badge bg-danger position-absolute top-0 start-0 m-2">
                                 Promoção
                             </span>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h3 class="h5 card-title">Fone Bluetooth</h3>
-                            <p class="text-secondary small">Som sem fios para o dia a dia.</p>
-                            <p class="mb-1">
-                                <del class="text-secondary">R$ 119,90</del>
-                            </p>
+                            <h3 class="h5">Fone Bluetooth</h3>
+                            <p class="text-secondary">Som sem fios para o dia a dia.</p>
+                            <p class="mb-1"><del>R$ 119,90</del></p>
                             <p class="fs-5 fw-bold text-primary">R$ 79,90</p>
-                            <button type="button" class="btn btn-primary mt-auto"
-                                    onclick="adicionarCarrinho(event, this)">
+                            <button class="btn btn-outline-secondary mb-2"
+                                    onclick="abrirProduto('Fone Bluetooth','Fone sem fio para ouvir suas músicas.','79,90')">
+                                Ver detalhes
+                            </button>
+                            <button class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho('Fone Bluetooth')">
                                 Adicionar ao carrinho
                             </button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Produto 2 -->
                 <div class="col produto" data-nome="Relógio Digital">
-                    <div class="card h-100" role="button" tabindex="0"
-                         data-produto="Relógio Digital"
-                         data-descricao="Relógio moderno para acompanhar sua rotina."
-                         data-preco="99,90"
-                         onclick="abrirProduto(this)"
-                         onkeydown="abrirProdutoTeclado(event, this)">
+                    <div class="card h-100">
                         <div class="position-relative">
-                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Relogio+Digital"
-                                 class="card-img-top"
-                                 alt="Relógio Digital">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+                                 class="card-img-top" alt="Relógio de pulso"
+                                 loading="lazy">
                             <span class="badge bg-danger position-absolute top-0 start-0 m-2">
                                 Promoção
                             </span>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h3 class="h5 card-title">Relógio Digital</h3>
-                            <p class="text-secondary small">Praticidade e estilo.</p>
-                            <p class="mb-1">
-                                <del class="text-secondary">R$ 149,90</del>
-                            </p>
+                            <h3 class="h5">Relógio Digital</h3>
+                            <p class="text-secondary">Praticidade e estilo.</p>
+                            <p class="mb-1"><del>R$ 149,90</del></p>
                             <p class="fs-5 fw-bold text-primary">R$ 99,90</p>
-                            <button type="button" class="btn btn-primary mt-auto"
-                                    onclick="adicionarCarrinho(event, this)">
+                            <button class="btn btn-outline-secondary mb-2"
+                                    onclick="abrirProduto('Relógio Digital','Relógio moderno para acompanhar sua rotina.','99,90')">
+                                Ver detalhes
+                            </button>
+                            <button class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho('Relógio Digital')">
                                 Adicionar ao carrinho
                             </button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Produto 3 -->
                 <div class="col produto" data-nome="Mochila Casual">
-                    <div class="card h-100" role="button" tabindex="0"
-                         data-produto="Mochila Casual"
-                         data-descricao="Mochila versátil para estudar, trabalhar ou passear."
-                         data-preco="89,90"
-                         onclick="abrirProduto(this)"
-                         onkeydown="abrirProdutoTeclado(event, this)">
+                    <div class="card h-100">
                         <div class="position-relative">
-                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Mochila+Casual"
-                                 class="card-img-top"
-                                 alt="Mochila Casual">
+                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
+                                 class="card-img-top" alt="Mochila"
+                                 loading="lazy">
                             <span class="badge bg-danger position-absolute top-0 start-0 m-2">
                                 Promoção
                             </span>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h3 class="h5 card-title">Mochila Casual</h3>
-                            <p class="text-secondary small">Espaço para seus itens essenciais.</p>
-                            <p class="mb-1">
-                                <del class="text-secondary">R$ 129,90</del>
-                            </p>
+                            <h3 class="h5">Mochila Casual</h3>
+                            <p class="text-secondary">Para estudar, trabalhar ou passear.</p>
+                            <p class="mb-1"><del>R$ 129,90</del></p>
                             <p class="fs-5 fw-bold text-primary">R$ 89,90</p>
-                            <button type="button" class="btn btn-primary mt-auto"
-                                    onclick="adicionarCarrinho(event, this)">
+                            <button class="btn btn-outline-secondary mb-2"
+                                    onclick="abrirProduto('Mochila Casual','Mochila versátil para seus itens essenciais.','89,90')">
+                                Ver detalhes
+                            </button>
+                            <button class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho('Mochila Casual')">
                                 Adicionar ao carrinho
                             </button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Produto 4 -->
                 <div class="col produto" data-nome="Garrafa Térmica">
-                    <div class="card h-100" role="button" tabindex="0"
-                         data-produto="Garrafa Térmica"
-                         data-descricao="Garrafa para ajudar a manter sua bebida na temperatura desejada."
-                         data-preco="49,90"
-                         onclick="abrirProduto(this)"
-                         onkeydown="abrirProdutoTeclado(event, this)">
+                    <div class="card h-100">
                         <div class="position-relative">
-                            <img src="https://placehold.co/400x300/e9ecef/212529?text=Garrafa+Termica"
-                                 class="card-img-top"
-                                 alt="Garrafa Térmica">
+                            <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80"
+                                 class="card-img-top" alt="Garrafa para bebidas"
+                                 loading="lazy">
                             <span class="badge bg-danger position-absolute top-0 start-0 m-2">
                                 Promoção
                             </span>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h3 class="h5 card-title">Garrafa Térmica</h3>
-                            <p class="text-secondary small">Ideal para acompanhar você.</p>
-                            <p class="mb-1">
-                                <del class="text-secondary">R$ 69,90</del>
-                            </p>
+                            <h3 class="h5">Garrafa Térmica</h3>
+                            <p class="text-secondary">Ideal para acompanhar você.</p>
+                            <p class="mb-1"><del>R$ 69,90</del></p>
                             <p class="fs-5 fw-bold text-primary">R$ 49,90</p>
-                            <button type="button" class="btn btn-primary mt-auto"
-                                    onclick="adicionarCarrinho(event, this)">
+                            <button class="btn btn-outline-secondary mb-2"
+                                    onclick="abrirProduto('Garrafa Térmica','Garrafa para levar sua bebida.','49,90')">
+                                Ver detalhes
+                            </button>
+                            <button class="btn btn-primary mt-auto"
+                                    onclick="adicionarCarrinho('Garrafa Térmica')">
                                 Adicionar ao carrinho
                             </button>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <p id="mensagemBusca" class="text-center mt-3"
                aria-live="polite"></p>
         </section>
 
-        <!-- Dois banners lado a lado -->
-        <section class="container my-5" aria-label="Campanhas da loja">
+        <!-- Dois banners -->
+        <section class="container my-5">
             <div class="row g-4">
                 <div class="col-12 col-md-6">
                     <div class="bg-primary text-white rounded p-4 h-100">
                         <h2 class="h4">Novidades para você</h2>
                         <p>Descubra produtos que combinam com seu estilo.</p>
-                        <a href="#produtos" class="btn btn-light">
-                            Ver produtos
-                        </a>
+                        <a href="#produtos" class="btn btn-light">Ver produtos</a>
                     </div>
                 </div>
-
                 <div class="col-12 col-md-6">
                     <div class="bg-success text-white rounded p-4 h-100">
                         <h2 class="h4">Ofertas especiais</h2>
-                        <p>Aproveite preços promocionais por tempo limitado.</p>
-                        <a href="#produtos" class="btn btn-light">
-                            Aproveitar ofertas
-                        </a>
+                        <p>Aproveite nossos preços promocionais.</p>
+                        <a href="#produtos" class="btn btn-light">Ver ofertas</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Benefícios em três colunas -->
+        <!-- Benefícios -->
         <section class="bg-light py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Por que comprar conosco?</h2>
-
                 <div class="row g-4 text-center">
                     <div class="col-12 col-md-4">
-                        <div class="p-3 h-100">
-                            <h3 class="h5">Entrega para você</h3>
-                            <p class="mb-0">Receba seus pedidos com comodidade.</p>
+                        <div class="p-3">
+                            <h3 class="h5">Entrega prática</h3>
+                            <p>Receba seus pedidos com comodidade.</p>
                         </div>
                     </div>
-
                     <div class="col-12 col-md-4">
-                        <div class="p-3 h-100">
-                            <h3 class="h5">Pagamento seguro</h3>
-                            <p class="mb-0">Uma experiência de compra simples.</p>
+                        <div class="p-3">
+                            <h3 class="h5">Compra fácil</h3>
+                            <p>Encontre seus produtos favoritos.</p>
                         </div>
                     </div>
-
                     <div class="col-12 col-md-4">
-                        <div class="p-3 h-100">
+                        <div class="p-3">
                             <h3 class="h5">Atendimento</h3>
-                            <p class="mb-0">Estamos aqui para ajudar você.</p>
+                            <p>Conte conosco para tirar suas dúvidas.</p>
                         </div>
                     </div>
                 </div>
@@ -428,31 +380,29 @@
             <div class="bg-primary text-white rounded p-4 p-md-5">
                 <h2 class="h3 text-center">Receba nossas novidades</h2>
                 <p class="text-center">
-                    Cadastre seu e-mail para ficar por dentro das ofertas.
+                    Informe seu e-mail para acompanhar nossas ofertas.
                 </p>
 
-                <form class="row justify-content-center"
-                      onsubmit="assinarNewsletter(event)">
+                <form id="formNewsletter" class="row justify-content-center">
                     <div class="col-12 col-md-8 col-lg-6">
                         <label for="emailNewsletter" class="form-label">
                             Seu e-mail
                         </label>
-
                         <div class="input-group">
                             <input type="email" id="emailNewsletter"
                                    class="form-control"
-                                   placeholder="seuemail@exemplo.com"
-                                   required>
+                                   placeholder="seuemail@exemplo.com" required>
                             <button class="btn btn-dark" type="submit">
                                 Assinar
                             </button>
                         </div>
-                        <p id="mensagemNewsletter" class="mt-2 mb-0"
+                        <p id="mensagemNewsletter" class="mt-2"
                            aria-live="polite"></p>
                     </div>
                 </form>
             </div>
         </section>
+
     </main>
 
     <!-- Rodapé com quatro colunas -->
@@ -461,11 +411,8 @@
             <div class="row g-4">
                 <div class="col-12 col-md-3">
                     <h2 class="h5">Minha Loja</h2>
-                    <p class="text-light">
-                        Produtos selecionados para facilitar seu dia a dia.
-                    </p>
+                    <p>Produtos selecionados para facilitar seu dia a dia.</p>
                 </div>
-
                 <div class="col-12 col-md-3">
                     <h2 class="h5">Institucional</h2>
                     <ul class="list-unstyled">
@@ -474,34 +421,30 @@
                         <li><a href="#produtos" class="link-light">Produtos</a></li>
                     </ul>
                 </div>
-
                 <div class="col-12 col-md-3">
                     <h2 class="h5">Atendimento</h2>
                     <ul class="list-unstyled">
                         <li><a href="#contato" class="link-light">Fale conosco</a></li>
                         <li><a href="#contato" class="link-light">Dúvidas</a></li>
-                        <li><a href="#contato" class="link-light">Newsletter</a></li>
                     </ul>
                 </div>
-
                 <div class="col-12 col-md-3">
                     <h2 class="h5">Redes sociais</h2>
-                    <p class="mb-1">Acompanhe nossas novidades.</p>
-                    <a href="https://www.instagram.com/"
-                       class="link-light" target="_blank"
-                       rel="noopener noreferrer">Instagram</a>
+                    <p>Acompanhe nossas novidades.</p>
+                    <a href="https://www.instagram.com/" target="_blank"
+                       rel="noopener noreferrer" class="link-light">
+                        Instagram
+                    </a>
                 </div>
             </div>
-
             <hr class="border-secondary">
-
             <p class="text-center mb-0">
                 &copy; 2026 Minha Loja. Todos os direitos reservados.
             </p>
         </div>
     </footer>
 
-    <!-- Modal de detalhes do produto -->
+    <!-- Modal de detalhes -->
     <div class="modal fade" id="produtoModal" tabindex="-1"
          aria-labelledby="tituloModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -511,20 +454,15 @@
                         Detalhes do produto
                     </h2>
                     <button type="button" class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Fechar"></button>
+                            data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
-
                 <div class="modal-body">
                     <p id="descricaoModal"></p>
-                    <p class="fs-5 fw-bold text-primary" id="precoModal"></p>
+                    <p id="precoModal" class="fw-bold text-primary"></p>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">
-                        Fechar
-                    </button>
+                            data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
@@ -533,94 +471,75 @@
     <!-- JavaScript do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Funções da página -->
+    <!-- Funções da loja -->
     <script>
         let quantidadeCarrinho = 0;
 
-        function abrirProduto(cartao) {
-            document.getElementById("tituloModal").textContent =
-                cartao.dataset.produto;
-
-            document.getElementById("descricaoModal").textContent =
-                cartao.dataset.descricao;
-
-            document.getElementById("precoModal").textContent =
-                "Preço: R$ " + cartao.dataset.preco;
-
-            const modal = bootstrap.Modal.getOrCreateInstance(
-                document.getElementById("produtoModal")
-            );
-
-            modal.show();
-        }
-
-        function abrirProdutoTeclado(evento, cartao) {
-            if (evento.target.closest("button")) {
-                return;
-            }
-
-            if (evento.key === "Enter" || evento.key === " ") {
-                evento.preventDefault();
-                abrirProduto(cartao);
-            }
-        }
-
-        function adicionarCarrinho(evento, botao) {
-            evento.stopPropagation();
-
+        function adicionarCarrinho(nomeProduto) {
             quantidadeCarrinho++;
 
             document.getElementById("quantidadeCarrinho").textContent =
                 quantidadeCarrinho;
 
-            const textoOriginal = botao.textContent;
-            botao.textContent = "Adicionado!";
-
-            setTimeout(function () {
-                botao.textContent = textoOriginal;
-            }, 1200);
+            alert(nomeProduto + " foi adicionado ao carrinho de demonstração.");
         }
 
-        function buscarProdutos() {
-            const busca = document.getElementById("campoBusca")
-                .value.trim().toLowerCase();
+        function abrirProduto(nome, descricao, preco) {
+            document.getElementById("tituloModal").textContent = nome;
+            document.getElementById("descricaoModal").textContent = descricao;
+            document.getElementById("precoModal").textContent =
+                "Preço: R$ " + preco;
 
-            const produtos = document.querySelectorAll(".produto");
-            let encontrados = 0;
+            bootstrap.Modal.getOrCreateInstance(
+                document.getElementById("produtoModal")
+            ).show();
+        }
 
-            produtos.forEach(function (produto) {
-                const nome = produto.dataset.nome.toLowerCase();
-                const corresponde = nome.includes(busca);
+        document.getElementById("formBusca").addEventListener(
+            "submit", function(evento) {
+                evento.preventDefault();
 
-                produto.classList.toggle("d-none", !corresponde);
+                const busca = document.getElementById("campoBusca")
+                    .value.trim().toLowerCase();
 
-                if (corresponde) {
-                    encontrados++;
+                const produtos = document.querySelectorAll(".produto");
+                let encontrados = 0;
+
+                produtos.forEach(function(produto) {
+                    const nome = produto.dataset.nome.toLowerCase();
+                    const corresponde = nome.includes(busca);
+
+                    produto.classList.toggle("d-none", !corresponde);
+
+                    if (corresponde) {
+                        encontrados++;
+                    }
+                });
+
+                const mensagem = document.getElementById("mensagemBusca");
+
+                if (busca === "") {
+                    mensagem.textContent = "Mostrando todos os produtos.";
+                } else if (encontrados === 0) {
+                    mensagem.textContent = "Nenhum produto encontrado.";
+                } else {
+                    mensagem.textContent =
+                        encontrados + " produto(s) encontrado(s).";
                 }
-            });
-
-            const mensagem = document.getElementById("mensagemBusca");
-
-            if (busca === "") {
-                mensagem.textContent = "Mostrando todos os produtos.";
-            } else if (encontrados === 0) {
-                mensagem.textContent = "Nenhum produto encontrado.";
-            } else {
-                mensagem.textContent =
-                    encontrados + " produto(s) encontrado(s).";
             }
-        }
+        );
 
-        function assinarNewsletter(evento) {
-            evento.preventDefault();
+        document.getElementById("formNewsletter").addEventListener(
+            "submit", function(evento) {
+                evento.preventDefault();
 
-            document.getElementById("mensagemNewsletter").textContent =
-                "Obrigado! Seu e-mail foi validado nesta demonstração.";
+                document.getElementById("mensagemNewsletter").textContent =
+                    "E-mail validado nesta demonstração. Obrigado!";
 
-            evento.target.reset();
-        }
+                this.reset();
+            }
+        );
     </script>
 
 </body>
 </html>
-
